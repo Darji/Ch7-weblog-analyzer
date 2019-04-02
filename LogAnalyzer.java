@@ -55,4 +55,51 @@ public class LogAnalyzer
     {
         reader.printData();
     }
-}
+  
+    
+    // added in the val of the total
+    public int numberOfAccesses()
+    {
+            int total = 0;
+            for(int hour = 0; hour < hourCounts.length; hour++) {
+            total = total + hourCounts[hour];
+            }// end of for
+            return total;
+    }// end if numberOfAccessess
+    //use while
+    public int busiestHour()
+    {
+            int numberOfAccessesAtBusiest = 0;
+            int busiestHour = 0;
+            int index = 0;
+            while(index < hourCounts.length - 1){
+                if (numberOfAccessesAtBusiest < hourCounts[index]){
+                    busiestHour = index;
+                    numberOfAccessesAtBusiest = hourCounts[index];
+                    index++;
+                }//end of if
+                else {
+                    index++;
+                }//end of else
+            }// end of while
+            return busiestHour;
+    }// end of busiestHour
+    
+    public int twobusiestHour()
+    {
+            int numberOfAccessesAtBusiest = 0;
+            int busiestHour = 0;
+            int index = 0;
+            while(index < hourCounts.length - 1){
+                if (numberOfAccessesAtBusiest < hourCounts[index] + hourCounts[index + 1]){
+                    busiestHour = index;
+                    numberOfAccessesAtBusiest = hourCounts[index] + hourCounts[index + 1];
+                    index++;
+                }//end of if
+                else {
+                    index++;
+                }//end of else 
+            }//end of while
+            return busiestHour;
+    }//end of twobusiesthour          
+}// end of logAnalyzer
